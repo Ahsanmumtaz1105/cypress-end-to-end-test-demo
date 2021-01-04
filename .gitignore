@@ -24,4 +24,4 @@ cypress/screenshots
 .nyc_output
 
 # experiment folder
-cypress/integration/examples
+cypress/test-scenarios/examples

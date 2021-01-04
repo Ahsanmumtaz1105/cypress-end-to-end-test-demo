@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cypress:open": "cypress open",
+    "cypress:open:mobile": "cypress open --config viewportWidth=375,viewportHeight=667",
+    "cypress:run": "cypress run",
+    "cypress:run:mobile": "cypress run --config viewportWidth=375,viewportHeight=667"
   },
   "author": "ahsan mumtaz",
   "license": "ISC",
