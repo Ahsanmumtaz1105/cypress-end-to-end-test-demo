@@ -175,16 +175,6 @@ export class auth {
   }
 
   /**
-   * Assert that the Onboarding dialog display to the user
-   * @method
-   *
-   */
-  assertOnboardingPage() {
-    cy.get('[data-test="user-onboarding-dialog-title"]').should('contain', 'Get Started with Real World App');
-    return this;
-  }
-
-  /**
    * Click the Next button of the onboarding dialog take to the add bank account  page
    * @method
    *
@@ -205,15 +195,6 @@ export class auth {
   }
 
   /**
-   * Assert the bank account dailog heading
-   * @method
-   */
-  assertAccountFormHeader() {
-    cy.get('[role="presentation"]').should('contain', 'Create Bank Account');
-    return this;
-  }
-
-  /**
    * Enter bank routing Number in the add bank account form of the onboarding process
    * @method
    * @param {string} bankRoutingNumber bank routing number
@@ -229,6 +210,46 @@ export class auth {
    */
   enterAccountNumber(bankAccountNumber) {
     cy.get('#bankaccount-accountNumber-input').type(bankAccountNumber);
+    return this;
+  }
+
+  /**
+   * Click on save to add the bank account in the onboarding process
+   * @method
+   */
+  saveAccount() {
+    cy.get('[type="submit"] span').contains('Save').click();
+    return this;
+  }
+
+  /**
+   * logout user from the application
+   * @method
+   */
+  logout() {
+    cy.get('[role="button"] span').contains('Logout').click();
+    return this;
+  }
+
+  //#endregion
+
+  //#region Assertions
+  /**
+   * Assert that the Onboarding dialog display to the user
+   * @method
+   *
+   */
+  assertOnboardingPage() {
+    cy.get('[data-test="user-onboarding-dialog-title"]').should('contain', 'Get Started with Real World App');
+    return this;
+  }
+
+  /**
+   * Assert the bank account dailog heading
+   * @method
+   */
+  assertAccountFormHeader() {
+    cy.get('[role="presentation"]').should('contain', 'Create Bank Account');
     return this;
   }
 
@@ -267,23 +288,5 @@ export class auth {
     cy.get('button[type="submit"]').should('be.disabled');
     return this;
   }
-  /**
-   * Click on save to add the bank account in the onboarding process
-   * @method
-   */
-  saveAccount() {
-    cy.get('[type="submit"] span').contains('Save').click();
-    return this;
-  }
-
-  /**
-   * logout user from the application
-   * @method
-   */
-  logout() {
-    cy.get('[role="button"] span').contains('Logout').click();
-    return this;
-  }
-
   //#endregion
 }

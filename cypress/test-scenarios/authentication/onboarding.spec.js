@@ -39,9 +39,9 @@ describe('User onboarding', function () {
     authentication.logout();
   });
 
-  it.only('Given a user onboarding \
-  when enter the incorrect Bank Account Number \
-  then app should give error', () => {
+  it('Given a user onboarding \
+  when enter invalid, bank name, account-number and routing-number \
+  then app should show helper text and disable Save button', () => {
     /***********
      * Test data
      ***********/
