@@ -39,7 +39,7 @@ describe('User onboarding', function () {
     authentication.logout();
   });
 
-  it('Given a user onboarding \
+  it.only('Given a user onboarding \
   when enter the incorrect Bank Account Number \
   then app should give error', () => {
     /***********
@@ -48,37 +48,26 @@ describe('User onboarding', function () {
     //#region
     // User info
     const userInfo = {
-      firstName: randomString(),
+      firstName: 'rob' + randomString(),
       lastName: randomString(),
-      userName: randomString(),
+      userName: 'testuser' + randomString(),
       password: 's3cret',
-    };
-
-    // Bank Acount info
-    const bankAccount = {
-      bankName: 'Lloyds Plc',
-      bankRoutingNumber: 767676787,
-      bankAccountNumber: 56546565656,
     };
     //#endregion
 
     cy.visit('/');
     const authentication = new auth();
 
+    authentication.signUp(userInfo).signIn(userInfo).onBoardingNextPage();
+
     authentication
-      .signUp(userInfo)
-      .signIn(userInfo)
-      .onBoardingNextPage()
-      .enterAccountNumber(bankAccount.bankAccountNumber)
-      .enterBankName(bankAccount.bankName)
-      .enterRoutingNumber(bankAccount.bankRoutingNumber)
-      .saveAccount()
-      .onboardingFinished();
-
-    // verify added bank account
-    const userBankAccount = new bankAccounts();
-    userBankAccount.goToBankAccounts().assertBankAccount(bankAccount.bankName);
-
-    authentication.logout();
+      .enterAccountNumber(' ')
+      .assertAccountNumberHelperText()
+      .enterBankName(' ')
+      .assertBankNameHelperText()
+      .enterRoutingNumber(' ')
+      .assertRoutingNumberHelperText()
+      .assertButtonDisabled()
+      .logout();
   });
 });

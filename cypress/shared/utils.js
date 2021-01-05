@@ -2,5 +2,5 @@
 var crypto = require('crypto');
 
 export const randomString = () => {
-  return crypto.randomBytes(10).toString('hex');
+  return crypto.randomBytes(3).toString('hex');
 };

@@ -1,3 +1,4 @@
+import { helperText } from '../../app-actions/bank-accounts/index';
 const apiUrl = Cypress.env('apiUrl');
 
 /**
@@ -231,6 +232,41 @@ export class auth {
     return this;
   }
 
+  /**
+   * Verify the helper text for Account Number
+   *  @method
+   */
+  assertAccountNumberHelperText() {
+    cy.get('#bankaccount-accountNumber-input-helper-text').should('have.text', helperText.accountNumber);
+    return this;
+  }
+
+  /**
+   * Verify the helper text for Bank Name
+   *  @method
+   */
+  assertBankNameHelperText() {
+    cy.get('#bankaccount-bankName-input-helper-text').should('have.text', helperText.bankName);
+    return this;
+  }
+
+  /**
+   * Verify the helper text for Routing Number
+   *  @method
+   */
+  assertRoutingNumberHelperText() {
+    cy.get('#bankaccount-routingNumber-input-helper-text').should('have.text', helperText.routingNumber);
+    return this;
+  }
+
+  /**
+   * Verify he button is disabled
+   *  @method
+   */
+  assertButtonDisabled() {
+    cy.get('button[type="submit"]').should('be.disabled');
+    return this;
+  }
   /**
    * Click on save to add the bank account in the onboarding process
    * @method
