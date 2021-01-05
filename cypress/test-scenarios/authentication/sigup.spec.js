@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-import * as auth from '../../app-actions/authentication/auth';
+import { auth } from '../../app-actions/authentication/index';
 
 describe('User Sign-up and Login', function () {
   beforeEach(function () {
@@ -23,8 +23,8 @@ describe('User Sign-up and Login', function () {
     //#region
     const userInfo = {
       firstName: 'Test',
-      lastName: 'user1',
-      userName: 'test001',
+      lastName: 'user7',
+      userName: 'test012',
       password: 's3cret',
     };
 
@@ -37,8 +37,9 @@ describe('User Sign-up and Login', function () {
 
     cy.visit('/');
 
-    auth.signUp(userInfo);
-    auth.signIn(userInfo);
-    auth.onboarding(bankAccount);
+    const authentication = new auth();
+    authentication.signUp(userInfo);
+    authentication.signIn(userInfo);
+    authentication.onboarding(bankAccount);
   });
 });

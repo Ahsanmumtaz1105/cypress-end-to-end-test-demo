@@ -1,10 +1,10 @@
 {
   "baseUrl": "http://localhost:3000",
   "projectId": "7s5okt",
-  "integrationFolder": "cypress/test-scenarios",
   "viewportHeight": 1000,
   "viewportWidth": 1280,
-  "firefoxGcInterval": null,
+  "screenshotOnRunFailure":true,
+  "integrationFolder": "cypress/test-scenarios",
   "env": {
     "apiUrl": "http://localhost:3001",
     "mobileViewportWidthBreakpoint": 414,
